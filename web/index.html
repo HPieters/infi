@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Infi | Security cameras Utrecht</title>
+  <!-- Video camera Icon by Martz90 available at http://www.iconarchive.com/show/circle-icons-by-martz90/video-camera-icon.html under a Creative Commons Attribution-Noncommercial-No Derivate 4.0. Full terms at http://creativecommons.org/licenses/by-nc-nd/4.0 -->
+  <link rel="icon" type="image/x-icon" href="/public/video-camera-icon.png">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <!--  Mapbox -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+  <!--  Styles -->
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.8em;
+    }
+
+    a {
+      transition: color 0.2s ease;
+      color: #ff6e00;
+    }
+
+    a:hover, a:focus {
+      color: #ED6905;
+    }
+
+    header {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+
+    footer {
+      text-align: center;
+    }
+
+    #source {
+      background: rgba(27, 31, 35, 0.08);
+      padding: 10px 14px;
+      border-radius: 20px;
+      margin: 15px auto;
+      text-align: center;
+      display: inline-block;
+    }
+
+    #source a {
+      font-weight: bold;
+    }
+
+    table td {
+      vertical-align: top;
+    }
+
+    table thead tr:nth-child(1) th {
+      height: 60px;
+      background-color: #272727;
+      color: #7F7F7C;
+      font-size: 2.0em;
+    }
+
+    table tr:nth-child(2) th {
+      text-align: left;
+      height: 25px;
+      font-weight: bold;
+    }
+
+    h1 {
+      padding: 36px 0 36px 55px;
+      margin: 0 0 0 20px;
+      background: url("/public/video-camera-icon.png") no-repeat;
+      background-size: 40px;
+      background-position: 0 50%;
+    }
+
+    .popup h2 {
+      margin: 0;
+      padding: 0 10px 0 0;
+    }
+
+    .popup p {
+      margin: 0;
+      padding: 0 10px 0 0;
+    }
+
+    #cameraTableContainer {
+      margin: 0;
+      width: 100%;
+      padding: 0;
+      height: 100%;
+      vertical-align: top;
+    }
+
+    #cameraTableContainer>td {
+      width: 25%;
+      text-align: center;
+    }
+
+    #cameraTableContainer table {
+      width: 100%;
+      margin: auto;
+      height: 100%;
+      border-collapse: collapse;
+    }
+
+    #cameraTableContainer table tbody tr {
+      height: 25px;
+      vertical-align: middle;
+    }
+
+    #cameraTableContainer table tbody td {
+      padding: 5px 0;
+    }
+
+    #cameraTableContainer table td:nth-child(1) {
+      height: 15px !important;
+      margin-right: 15px;
+      font-weight: bold;
+      border-radius: 20px;
+    }
+
+    #cameraTableContainer table tr:last-child td {
+      height: 100%;
+    }
+
+    #jsMapID {
+      position: absolute; top: 0; bottom: 0; width: 100%;
+    }
+
+    #jsMapContainer {
+      display: none;
+      margin: auto;
+      height: 600px;
+      width: 100%;
+      position: relative;
+      margin-bottom: 24px;
+       border:  1px solid #ccc;
+    }
+
+    #jsTableContainer {
+      border:  1px solid #ccc;
+    }
+
+    .tabs {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .tabs li:not(:last-child) {
+      margin-right: 8px;
+    }
+
+    .tabs li a {
+      display: inline-block;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      cursor: pointer;
+      background-color: #f7f7f7;
+      font-size: 1.3em;
+      text-decoration: none;
+      color:rgba(27, 31, 35, 0.6)
+    }
+
+    .tabs li a.active {
+      background-color: #fff;
+      border-bottom: 1px solid #fff;
+      color: #ff6e00;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Security cameras Utrecht</h1>
+
+    <ul class="tabs">
+      <li><a href="/#table-view" id="jsTableViewButton" class="active">Table View</a></li>
+      <li><a href="/#map-view" id="jsMapViewButton">Map View</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <div id="jsMapContainer">
+      <div id="jsMapID"></div>
+    </div>
+    <div  id="jsTableContainer">
+    <table id="cameraTableContainer">
+      <tbody>
+        <tr>
+          <td>
+            <table id="column3">
+              <thead>
+                <tr>
+                  <th colspan="4">Cameras 3</th>
+                </tr>
+                <tr>
+                  <th>Number</th>
+                  <th>Name</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table id="column5">
+              <thead>
+                <tr>
+                  <th colspan="4">Cameras 5</th>
+                </tr>
+                <tr>
+                  <th>Number</th>
+                  <th>Name</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table id="column35">
+              <thead>
+                <tr>
+                  <th colspan="4">Cameras 3 &amp; 5</th>
+                </tr>
+                <tr>
+                  <th>Number</th>
+                  <th>Name</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <table id="columnOther">
+              <thead>
+                <tr>
+                  <th colspan="4">Cameras Other</th>
+                </tr>
+                <tr>
+                  <th>Number</th>
+                  <th>Name</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </main>
+  <footer>
+    <div id="source">
+      Source:
+      <a
+        href="https://data.overheid.nl/dataset/utrecht-cameraregister-utrecht">https://data.overheid.nl/dataset/utrecht-cameraregister-utrecht</a>
+    </div>
+  </footer>
+</body>
+<script src="/public/main.js"></script>
+</html>

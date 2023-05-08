@@ -1,0 +1,15 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "description": "CLI for the Keep Talking and Everybody Codes from Infi.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Harrie Pieters <harrie@harriepieters.nl>",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "10.0.1"
+  }
+}
