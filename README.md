@@ -14,6 +14,6 @@ This repository contains the solutions to the exercises in [https://github.com/i
 
 ## Bonus code to discuss
 
-4. 6 years ago I build my own alternative to Google Analytics, this is the client code snippet.
+4. 6 years ago I build my own alternative to Google Analytics, this is the client code snippet. Can be found in `analytics` folder.
 
 
