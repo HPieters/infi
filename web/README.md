@@ -27,5 +27,7 @@ You can find documentation for how to use Google Maps at [the Google Maps docume
 
 - Tests
 - Documentation
+- Add loading state
+- Improve UI
 - Same application in Next.js?
 - Make code more robust
