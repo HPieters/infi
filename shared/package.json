@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "Shared code for the Keep Talking and Everybody Codes exercise from Infi. ",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jasmine getCameraRecords.spec.mjs "
   },
+  "type": "module",
   "keywords": [],
   "author": "Harrie Pieters <harrie@harriepieters.nl>",
   "license": "ISC",
   "dependencies": {
     "csv": "6.2.12"
+  },
+  "devDependencies": {
+    "jasmine": "5.0.0"
   }
 }
